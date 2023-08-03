@@ -9,7 +9,8 @@ var defaultSettings = {
     automaticUpdates: true,
     debugMode: false,
     autoRemoveTorrents: false,
-    alwaysPromptUploadOptions: false,
+    alwaysPromptUploadOptions: true,
+	askUploadOptions : true,
     ui: {
         resizeMode: 'FixedResizer',
         notifications: true,

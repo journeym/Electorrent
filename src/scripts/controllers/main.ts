@@ -110,7 +110,7 @@ export let mainController = ["$rootScope", "$scope", "$timeout", "$bittorrent", 
     })
 
     // Listen for incomming torrent files from the main process
-    electron.ipc.on('torrentfiles', function(event, buffer: ArrayLike<any>, filename: string, askUploadOptions: boolean){
+    electron.ipc.on('torrentfiles', function(event, buffer: ArrayLike<any>, filename: string, askUploadOptions: true){
         var data = new Uint8Array(buffer)
         let file: PendingTorrentUploadFile = {
             type: 'file',
