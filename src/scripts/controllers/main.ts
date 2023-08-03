@@ -1,4 +1,4 @@
-import { PendingTorrentUploadFile } from "../directives/add-torrent-modal/add-torrent-modal.directive";
+import { PendingTorrentUploadFile,PendingTorrentUploadLink } from "../directives/add-torrent-modal/add-torrent-modal.directive";
 
 angular.module("torrentApp").controller("", []);
 
@@ -105,7 +105,12 @@ export let mainController = ["$rootScope", "$scope", "$timeout", "$bittorrent", 
     // Listen for incomming magnet links from the main process
     electron.ipc.on('magnet', function(event, data){
         data.forEach(function(magnet){
-            $rootScope.$btclient.addTorrentUrl(magnet);
+			let link: PendingTorrentUploadLink = {
+				type: 'link',
+				uri: magnet,
+			}
+			$scope.$broadcast("torrents:add", link, true)
+            //$rootScope.$btclient.addTorrentUrl(magnet);
         })
     })
 
